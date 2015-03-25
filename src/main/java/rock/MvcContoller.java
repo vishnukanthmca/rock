@@ -7,16 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MvcContoller {
 
+	public MvcContoller() {
+		
+	}
+	
+	public MvcContoller(String a, String b) {
+		System.out.println("a is set " + a + " " + b);
+	}
+
 	@Autowired
 	private Dao dao;
-	
+
 	@RequestMapping("/index")
 	public String welcome() {
 
 		Bottle bottle = new Bottle();
 		bottle.setCompany("Mannar and Co");
 		dao.saveBottle(bottle);
-		
+
 		return "hello";
 	}
 }

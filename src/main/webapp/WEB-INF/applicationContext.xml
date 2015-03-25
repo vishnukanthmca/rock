@@ -1,7 +1,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
@@ -15,7 +14,7 @@
 
 	<context:component-scan base-package="rock" />
 
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -27,24 +26,28 @@
 		</property>
 	</bean>
 
-	<bean id="dao" class="rock.Dao"/>
- 
- 	<jee:jndi-lookup id="dataSource" jndi-name="java:jboss/datasources/rockds"/>
- 	
- 	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
- 		<property name="database" value="MYSQL"/>
- 		<property name="showSql" value="true"/>
- 		<property name="generateDdl" value="true"/>
- 	</bean>
+	<bean id="dao" class="rock.Dao">
+		<constructor-arg index="1" value="323" />
+		<constructor-arg index="0" value="5555" />
+	</bean>
+
+	<jee:jndi-lookup id="dataSource" jndi-name="java:jboss/datasources/rockds" />
+
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<!-- <property name="jpaVendorAdpater" value="jpaVendorAdapter" /> -->
 		<property name="jtaDataSource" ref="dataSource" />
-		
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
 	</bean>
- 
+
 	<bean id="transactionManager"
 		class="org.springframework.transaction.jta.JtaTransactionManager">
+	</bean>
+
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="database" value="MYSQL" />
+		<property name="showSql" value="true" />
+		<property name="generateDdl" value="true" />
 	</bean>
 
 </beans>
