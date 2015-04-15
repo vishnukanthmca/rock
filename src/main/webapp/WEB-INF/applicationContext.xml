@@ -31,6 +31,8 @@
 		<constructor-arg index="0" value="5555" />
 	</bean>
 
+	<bean id="service" class="rock.Service"></bean>
+
 	<jee:jndi-lookup id="dataSource" jndi-name="java:jboss/datasources/rockds" />
 
 	<bean id="entityManagerFactory"

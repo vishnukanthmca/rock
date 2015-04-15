@@ -16,15 +16,21 @@ public class MvcContoller {
 	}
 
 	@Autowired
-	private Dao dao;
+	private Service service;
 
 	@RequestMapping("/index")
-	public String welcome() {
+	public String welcome()  {
 
 		Bottle bottle = new Bottle();
-		bottle.setCompany("Mannar and Co");
-		dao.saveBottle(bottle);
+		bottle.setCompany("javax transaction");
 
+		try {
+			service.saveBottle(bottle);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return "hello";
 	}
 }
