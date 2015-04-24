@@ -19,4 +19,11 @@ public class Service {
 		}
 	}
 
+	public void init() {
+		System.out.println("init method from service");
+	}
+	
+	public Service() {
+		System.out.println("Constructor from service");
+	}
 }

@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/jee
         http://www.springframework.org/schema/jee/spring-jee.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd" default-init-method="init">
 
 	<context:component-scan base-package="rock" />
 
@@ -26,12 +26,12 @@
 		</property>
 	</bean>
 
-	<bean id="dao" class="rock.Dao">
+	<bean id="dao" class="rock.Dao" scope="prototype">
 		<constructor-arg index="1" value="323" />
 		<constructor-arg index="0" value="5555" />
 	</bean>
 
-	<bean id="service" class="rock.Service"></bean>
+	<bean id="service" class="rock.Service" scope="prototype"></bean>
 
 	<jee:jndi-lookup id="dataSource" jndi-name="java:jboss/datasources/rockds" />
 

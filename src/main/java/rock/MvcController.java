@@ -1,17 +1,22 @@
 package rock;
 
+import javax.inject.Inject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MvcContoller {
+public class MvcController {
 
-	public MvcContoller() {
+	public MvcController() {
 		
 	}
 	
-	public MvcContoller(String a, String b) {
+	@Inject
+	private Dao dao;
+	
+	public MvcController(String a, String b) {
 		System.out.println("a is set " + a + " " + b);
 	}
 

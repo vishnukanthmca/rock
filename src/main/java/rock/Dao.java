@@ -6,9 +6,13 @@ import javax.persistence.PersistenceContext;
 public class Dao {
 
 	public Dao() {
-		// TODO Auto-generated constructor stub
+		System.out.println("dao constructor");
 	}
 
+	public void init() {
+		System.out.println("init stuff in dao");
+	}
+	
 	public Dao(String a, int b) {
 		System.out.println("a is " + a + ", b " + b);
 	}
